@@ -1,0 +1,25 @@
+# config/routes/annotations.yaml
+controllers:
+    resource: ../src/Controller/
+    type: annotation
+
+kernel:
+    resource: ../src/Kernel.php
+    type: annotation
+# config/routes.yaml
+user_list:
+    path: /users
+    controller: App\Controller\UserController::userList
+    methods: [GET]
+# config/routes.yaml
+user_edit:
+    path: /user/{id}/edit
+    controller: App\Controller\UserController::editUser
+    methods: [GET, POST] # Vous pouvez spécifier les méthodes HTTP prises en charge pour cette route
+
+# config/routes.yaml
+
+app_user_delete:
+    path: '/user/{id}/delete'
+    controller: 'App\Controller\UserController::delete'
+    methods: ['POST']

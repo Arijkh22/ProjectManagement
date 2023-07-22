@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <div class="main-wrapper">
+        <div class="account-content">
+            <div class="container">
+                <div class="account-logo">
+                    <a href="index.html"><img src="{{asset('img/logo2.png')}}" alt="Dreamguy's Technologies"></a>
+                </div>
+                <div class="account-box">
+                    <div class="account-wrapper">
+                        <h3 class="account-title">Register</h3>
+                        <p class="account-subtitle">Access to our dashboard</p>
+
+                        {{ form_errors(registrationForm) }}
+
+                        {{ form_start(registrationForm) }}
+                        <div class="form-group">
+                            {{ form_label(registrationForm.username) }}
+                            {{ form_widget(registrationForm.username, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(registrationForm.nom) }}
+                            {{ form_widget(registrationForm.nom, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(registrationForm.prenom) }}
+                            {{ form_widget(registrationForm.prenom, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(registrationForm.age) }}
+                            {{ form_widget(registrationForm.age, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(registrationForm.email) }}
+                            {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(registrationForm.plainPassword, 'Password') }}
+                            {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+
+                        <div class="form-group text-center">
+                            <button class="btn btn-primary account-btn" type="submit">Register</button>
+                        </div>
+                        {{ form_end(registrationForm) }}
+
+                        <div class="account-footer">
+                            <p>Already have an account? <a href="../security/login.html.twig">Login</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
