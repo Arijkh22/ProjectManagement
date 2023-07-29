@@ -1,12 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Project index
-{% endblock %}
+{% block title %}Project index{% endblock %}
 
 {% block body %}
-	<div
-		class="content container-fluid">
-
+	<div class="content container-fluid">
 		<!-- Page Header -->
 		<div class="page-header">
 			<div class="row align-items-center">
@@ -23,119 +20,66 @@
 					<a href="{{ path('app_project_new') }}" class="btn add-btn">
 						<i class="fa fa-plus"></i>
 						Add Project</a>
-					{# <div class="view-icons">
-																																															<a href="employees.html" class="grid-view btn btn-link">
-																																																<i class="fa fa-th"></i>
-																																															</a>
-																																															<a href="employees-list.html" class="list-view btn btn-link active">
-																																																<i class="fa fa-bars"></i>
-																																															</a>
-																																														</div> #}
 				</div>
 			</div>
 		</div>
 		<!-- /Page Header -->
 
 		<!-- Search Filter -->
-
 		<!-- /Search Filter -->
 
-			<div class="row"> <div class="col-md-12">
+		<div class="row">
+			<div class="col-md-12">
 				<div class="table-responsive">
-					<div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-						<div class="row">
-							<div
-								class="col-sm-12 col-md-6">{# <div class="dataTables_length" id="DataTables_Table_0_length">
-																																																																																						<label>Show
-																																																																																							<select name="DataTables_Table_0_length" aria-controls="DataTables_Table_0" class="custom-select custom-select-sm form-control form-control-sm">
-																																																																																								<option value="10">10</option>
-																																																																																								<option value="25">25</option>
-																																																																																								<option value="50">50</option>
-																																																																																								<option value="100">100</option>
-																																																																																							</select>
-																																																																																							entries</label>
-																																																																																					</div> #}
-							</div>
-							<div class="col-sm-12 col-md-6"></div>
-						</div>
-						<div class="row">
-							<div class="col-sm-12">
-								<table class="table table-striped custom-table datatable dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
-									<thead>
-										<tr role="row">
-											<th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Mobile: activate to sort column ascending" style="width: 115.984px;">Nom</th>
-											<th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 251.922px;">Status</th>
-											<th class="text-nowrap sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Join Date: activate to sort column ascending" style="width: 138.203px;">Date</th>
-											<th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending" style="width: 323.688px;">Priorite</th>
-											<th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending" style="width: 323.688px;">User</th>
-											<th class="text-right no-sort sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Action: activate to sort column ascending" style="width: 102.453px;">Action</th>
-										</tr>
-									</thead>
-
-									<tbody>
-
-										{% for project in projects %}
-											<tr role="row" class="odd">
-												<td>{{ project.nom }}</td>
-												<td>{{ project.status }}</td>
-												<td>{{ project.date ? project.date|date('Y-m-d') : '' }}</td>
-												<td>{{ project.priorite }}</td>
-												<td>{{ project.user.nom }}</td>
-												<td class="text-right">
-													<div class="dropdown dropdown-action">
-														<a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-															<i class="material-icons">more_vert</i>
-														</a>
-														<div class="dropdown-menu dropdown-menu-right">
-															<a class="dropdown-item" href="{{ path('app_project_edit', {'id': project.id}) }}">
-																<i class="fa fa-pencil m-r-5"></i>
-																Edit</a>
-															{# <a class="dropdown-item" href="{{ path('app_user_delete', {'id': user.id}) }}">
-																																																																																																																																				<i class="fa fa-trash-o m-r-5"></i>
-																																																																																																																																				Delete</a> #}
-
-															<form action="{{ path('app_project_delete', {'id': project.id}) }}" method="post">
-																<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ project.id) }}">
-																<button type="submit" class="dropdown-item">
-																	<i class="fa fa-trash-o m-r-5"></i>
-																	Delete
-																</button>
-															</form>
-
-														</div>
-													</div>
-												</td>
-											</tr>
-										{% else %}
-											<tr>
-												<td colspan="9">no records found</td>
-											</tr>
-										{% endfor %}
-									</tbody>
-								</table>
-							</div>
-						</div>
-						<div class="row">
-							<div
-								class="col-sm-12 col-md-5">{# <div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">Showing 1 to 7 of 7 entries</div> #}
-							</div>
-							<div class="col-sm-12 col-md-7">
-								<div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate">
-									<ul class="pagination">
-										<li class="paginate_button page-item previous disabled" id="DataTables_Table_0_previous">
-											<a href="#" aria-controls="DataTables_Table_0" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
-										</li>
-										<li class="paginate_button page-item active">
-											<a href="#" aria-controls="DataTables_Table_0" data-dt-idx="1" tabindex="0" class="page-link">1</a>
-										</li>
-										<li class="paginate_button page-item next disabled" id="DataTables_Table_0_next">
-											<a href="#" aria-controls="DataTables_Table_0" data-dt-idx="2" tabindex="0" class="page-link">Next</a>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
+					<table class="table table-striped custom-table datatable no-footer" id="DataTables_Table_0">
+						<thead>
+						<tr>
+							<th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Nom: activate to sort column ascending" style="width: 115.984px;">Nom</th>
+							<th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Status: activate to sort column descending" style="width: 251.922px;">Status</th>
+							<th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Description: activate to sort column ascending" style="width: 323.688px;">Description</th>
+							<th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Date: activate to sort column ascending" style="width: 138.203px;">Date</th>
+							<th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Priorite: activate to sort column ascending" style="width: 323.688px;">Priorite</th>
+							<th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="User: activate to sort column ascending" style="width: 323.688px;">User</th>
+							<th class="text-right no-sort sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Action: activate to sort column ascending" style="width: 102.453px;">Action</th>
+						</tr>
+						</thead>
+						<tbody>
+						{% for project in projects %}
+							<tr>
+								<td>{{ project.getNom() }}</td>
+								<td>{{ project.getStatus() }}</td>
+								<td>{{ project.getDescription() }}</td>
+								<td>{{ project.getDate() ? project.getDate()|date('Y-m-d') : '' }}</td>
+								<td>{{ project.getPriorite() }}</td>
+								<td>{{ project.getUser() ? project.getUser().getNom() : '' }}</td>
+								<td class="text-right">
+									<div class="dropdown dropdown-action">
+										<a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+											<i class="material-icons">more_vert</i>
+										</a>
+										<div class="dropdown-menu dropdown-menu-right">
+											<a class="dropdown-item" href="{{ path('app_project_edit', {'id': project.getId()}) }}">
+												<i class="fa fa-pencil m-r-5"></i>
+												Edit
+											</a>
+											<form action="{{ path('app_project_delete', {'id': project.getId()}) }}" method="post">
+												<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ project.getId()) }}">
+												<button type="submit" class="dropdown-item">
+													<i class="fa fa-trash-o m-r-5"></i>
+													Delete
+												</button>
+											</form>
+										</div>
+									</div>
+								</td>
+							</tr>
+						{% else %}
+							<tr>
+								<td colspan="7">No records found</td>
+							</tr>
+						{% endfor %}
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>

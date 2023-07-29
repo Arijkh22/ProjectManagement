@@ -1,182 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-	<meta name="description" content="Smarthr - Bootstrap Admin Template">
-	<meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
-	<meta name="author" content="Dreamguys - Bootstrap Admin Template">
-	<meta name="robots" content="noindex, nofollow">
-	<title>{% block title %}Dashboard - HRMS admin template{% endblock %}</title>
-	{% block css %}
-		<!-- Favicon -->
-		<link rel="icon" type="image/x-icon" href="{{ asset('img/favicon.png') }}">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+		<meta name="description" content="Smarthr - Bootstrap Admin Template">
+		<meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
+		<meta name="author" content="Dreamguys - Bootstrap Admin Template">
+		<meta name="robots" content="noindex, nofollow">
+		<title>
+			{% block title %}Dashboard - HRMS admin template
+			{% endblock %}
+		</title>
+		{% block css %}
+			<!-- Favicon -->
+			<link
+			rel="stylesheet" type="image/x-icon" href="{{ asset('img/favicon.png') }}">
 
-		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+			<!-- Bootstrap CSS -->
+			<link
+			rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 
-		<!-- Fontawesome CSS -->
-		<link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+			<!-- Fontawesome CSS -->
+			<link
+			rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
 
-		<!-- Lineawesome CSS -->
-		<link rel="stylesheet" href="{{ asset('css/line-awesome.min.css') }}">
+			<!-- Lineawesome CSS -->
+			<link
+			rel="stylesheet" href="{{ asset('css/line-awesome.min.css') }}">
 
-		<!-- Chart CSS -->
-		<link rel="stylesheet" href="{{ asset('plugins/morris/morris.css') }}">
+			<!-- Chart CSS -->
+			<link
+			rel="stylesheet" href="{{ asset('plugins/morris/morris.css') }}">
 
-		<!-- Main CSS -->
-		<link rel="stylesheet" href="{{ asset('css/style.css') }}">
-	{% endblock %}
-</head>
-<body>
-<!-- Main Wrapper -->
-<div class="main-wrapper">
-	<!-- Header -->
-	<div class="header">
-		<!-- Logo -->
-		<div class="header-left">
-			<a href="index.html" class="logo">
-				<img src="{{ asset('img/logo.png') }}" width="40" height="40" alt="">
-			</a>
-		</div>
-		<!-- /Logo -->
+			<!-- Main CSS -->
+			<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
-		<a id="toggle_btn" href="javascript:void(0);">
-            <span class="bar-icon">
-                <span></span>
-                <span></span>
-                <span></span>
-            </span>
-		</a>
+		{% endblock %}
+	</head>
+	<body>
+		<!-- Main Wrapper -->
+		<div
+			class="main-wrapper">
 
-		<!-- Header Title -->
-		<div class="page-title-box">
-			<h3>Project Management</h3>
-		</div>
-		<!-- /Header Title -->
+			<!-- Header -->
+			<div
+				class="header">
 
-		<a id="mobile_btn" class="mobile_btn" href="#sidebar">
-			<i class="fa fa-bars"></i>
-		</a>
-
-		<!-- Header Menu -->
-		<ul class="nav user-menu">
-			<!-- User Profile -->
-			<li class="nav-item dropdown has-arrow main-drop">
-				<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-					<i class="la la-user"></i>
-				</a>
-				<div class="dropdown-menu">
-					<a class="dropdown-item" href="profile.html">My Profile</a>
-					<a class="dropdown-item" href="login.html">Logout</a>
+				<!-- Logo -->
+				<div class="header-left">
+					<a href="index.html" class="logo">
+						<img src="{{ asset('img/logo.png') }}" width="40" height="40" alt="">
+					</a>
 				</div>
-			</li>
-			<!-- /User Profile -->
-		</ul>
-		<!-- /Header Menu -->
+				<!-- /Logo -->
 
-		<!-- Mobile Menu -->
-		<div class="dropdown mobile-user-menu">
-			<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-				<i class="fa fa-ellipsis-v"></i>
-			</a>
-			<div class="dropdown-menu dropdown-menu-right">
-				<a class="dropdown-item" href="profile.html">My Profile</a>
-				<a class="dropdown-item" href="settings.html">Settings</a>
-				<a class="dropdown-item" href="login.html">Logout</a>
+				<a id="toggle_btn" href="javascript:void(0);">
+					<span class="bar-icon">
+						<span></span>
+						<span></span>
+						<span></span>
+					</span>
+				</a>
+
+				<!-- Header Title -->
+				<div class="page-title-box">
+					<h3>Project Management
+					</h3>
+				</div>
+				<!-- /Header Title -->
+
+				<a id="mobile_btn" class="mobile_btn" href="#sidebar">
+					<i class="fa fa-bars"></i>
+				</a>
+
+				<!-- Header Menu -->
+				<ul
+					class="nav user-menu">
+
+
+					<!-- /Message Notifications -->
+
+					<li class="nav-item dropdown has-arrow main-drop">
+						<aAdmin</span href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" <span>></a>
+						<div class="dropdown-menu">
+							<a class="dropdown-item" href="profile.html">My Profile</a>
+							<a class="dropdown-item" href="login.html">Logout</a>
+						</div>
+					</li>
+				</ul>
+				<!-- /Header Menu -->
+
+				<!-- Mobile Menu -->
+				<div class="dropdown mobile-user-menu">
+					<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+						<i class="fa fa-ellipsis-v"></i>
+					</a>
+					<div class="dropdown-menu dropdown-menu-right">
+						<a class="dropdown-item" href="profile.html">My Profile</a>
+						<a class="dropdown-item" href="settings.html">Settings</a>
+						<a class="dropdown-item" href="login.html">Logout</a>
+					</div>
+				</div>
+				<!-- /Mobile Menu -->
+
 			</div>
-		</div>
-		<!-- /Mobile Menu -->
-	</div>
-	<!-- /Header -->
+			<!-- /Header -->
 
-	<!-- Sidebar -->
-	<div class="sidebar" id="sidebar">
-		<div class="sidebar-inner slimscroll">
-			<div id="sidebar-menu" class="sidebar-menu">
-				<ul>
-					<li class="menu-title">
-						<span>Main</span>
-					</li>
-					<li class="submenu">
-						<a href="#">
-							<i class="la la-dashboard"></i>
-							<span>Dashboard</span>
-							<span class="menu-arrow"></span>
-						</a>
-						<ul style="display: none;">
-							<li>
-								<a class="active" href="index.html">Admin Dashboard</a>
+			<!-- Sidebar -->
+			<div class="sidebar" id="sidebar">
+				<div class="sidebar-inner slimscroll">
+					<div id="sidebar-menu" class="sidebar-menu">
+						<ul>
+							<li class="menu-title">
+								<span>Main</span>
 							</li>
-							<li>
-								<a href="employee-dashboard.html">Employee Dashboard</a>
+							<li class="submenu">
+								<a href="#">
+									<i class="la la-dashboard"></i>
+									<span>
+										Dashboard</span>
+									<span class="menu-arrow"></span>
+								</a>
+								<ul style="display: none;">
+									<li>
+										<a class="active" href="index.html">Admin Dashboard</a>
+									</li>
+									<li>
+										<a href="employee-dashboard.html">Employee Dashboard</a>
+									</li>
+								</ul>
 							</li>
-						</ul>
-					</li>
 
-					<li class="menu-title">
-						<span>Employees</span>
-					</li>
-					<li class="submenu">
-						<a href="#" class="">
-							<i class="la la-user"></i>
-							<span>Employees</span>
-							<span class="menu-arrow"></span>
-						</a>
-						<ul style="display: none;">
-							<li>
-								<a href="{{ path ('app_user_index') }}">All Employees</a>
+							<li class="menu-title">
+								<span>Employees</span>
 							</li>
-						</ul>
-					</li>
-					<li class="submenu">
-						<a href="#" class="">
-							<i class="la la-rocket"></i>
-							<span>Projects</span>
-							<span class="menu-arrow"></span>
-						</a>
-						<ul style="display: none;">
-							<li>
-								<a href="{{ path ('app_project_index') }}">Projects</a>
+							<li class="submenu">
+								<a href="#" class="">
+									<i class="la la-user"></i>
+									<span>
+										Employees</span>
+									<span class="menu-arrow"></span>
+								</a>
+								<ul style="display: none;">
+									<li>
+										<a href="{{ path ('app_user_index') }}">All Employees</a>
+									</li>
+
+								</ul>
 							</li>
+							<li class="submenu">
+								<a href="#" class="">
+									<i class="la la-rocket"></i>
+									<span>
+										Projects</span>
+									<span class="menu-arrow"></span>
+								</a>
+								<ul style="display: none;">
+									<li>
+										<a href="{{ path ('app_project_index') }}" >Projects</a>
+									</li>
+									<li>
+										<a href="{{ path ('app_tache_index') }}" >Taches</a>
+									</li>
+									
+								</ul>
+							</li>
+
+
 						</ul>
 					</li>
 				</ul>
 			</div>
 		</div>
-	</div>
-	<!-- /Sidebar -->
+	</body>
+</html></div><!-- /Sidebar --><!-- Page Wrapper --><div
+class="page-wrapper">
 
-	<!-- Page Wrapper -->
-	<div class="page-wrapper">
-		<!-- Page Content -->
-		<div class="content container-fluid">
-			{% block body %}{% endblock %}
-		</div>
-		<!-- /Page Content -->
+<!-- Page Content -->
+<div class="content container-fluid"> {% block body %}{% endblock %}
 	</div>
 	<!-- /Page Wrapper -->
-</div>
-<!-- /Main Wrapper -->
 
-{% block js %}
-	<!-- jQuery -->
-	<script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
+</div></div><!-- /Main Wrapper -->{% block js %}
+<!-- jQuery -->
+<script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
 
-	<!-- Bootstrap Core JS -->
-	<script src="{{ asset('js/popper.min.js') }}"></script>
-	<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<!-- Bootstrap Core JS -->
+<script src="{{ asset('js/popper.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
 
-	<!-- Slimscroll JS -->
-	<script src="{{ asset('js/jquery.slimscroll.min.js') }}"></script>
+<!-- Slimscroll JS -->
+<script src="{{ asset('js/jquery.slimscroll.min.js') }}"></script>
 
-	<!-- Chart JS -->
-	<script src="{{ asset('plugins/morris/morris.min.js') }}"></script>
-	<script src="{{ asset('plugins/raphael/raphael.min.js') }}"></script>
-	<script src="{{ asset('js/chart.js') }}"></script>
+<!-- Chart JS -->
+<script src="{{ asset('plugins/morris/morris.min.js') }} "></script>
+<script src="{{ asset('plugins/raphael/raphael.min.js') }}"></script>
+<script src="{{ asset('js/chart.js') }}"></script>
 
-	<!-- Custom JS -->
-	<script src="{{ asset('js/app.js') }}"></script>
-{% endblock %}
-</body>
-</html>
+<!-- Custom JS -->
+<script src="{{ asset('js/app.js') }}"></script>{% endblock %}</body></html>

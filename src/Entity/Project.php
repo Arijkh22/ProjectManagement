@@ -29,6 +29,9 @@ class Project
     #[ORM\ManyToOne(inversedBy: 'project')]
     private ?User $user = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $description = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -90,6 +93,18 @@ class Project
     public function setUser(?User $user): static
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): static
+    {
+        $this->description = $description;
 
         return $this;
     }

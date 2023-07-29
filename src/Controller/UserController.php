@@ -81,4 +81,5 @@ class UserController extends AbstractController
 
         return $this->redirectToRoute('app_user_index');
     }
+
 }
