@@ -36,7 +36,7 @@ class UserController extends AbstractController
             return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('user/new.html.twig', [
+        return $this->renderForm('user/_form.html.twig', [
             'user' => $user,
             'form' => $form,
         ]);
@@ -68,7 +68,7 @@ class UserController extends AbstractController
         ]);
     }
 
-// src/Controller/UserController.php
+    // src/Controller/UserController.php
 
     #[Route('/{id}/delete', name: 'app_user_delete', methods: ['POST'])]
     public function delete(Request $request, User $user): Response
@@ -81,6 +81,4 @@ class UserController extends AbstractController
 
         return $this->redirectToRoute('app_user_index');
     }
-
-
 }

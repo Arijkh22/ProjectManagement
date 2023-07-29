@@ -1,44 +1,186 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User index{% endblock %}
+{% block title %}User index
+{% endblock %}
 
 {% block body %}
-    <h1>User index</h1>
+	<div
+		class="content container-fluid">
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Username</th>
-                <th>Password</th>
-                <th>Nom</th>
-                <th>Age</th>
-                <th>Prenom</th>
-                <th>Email</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for user in users %}
-            <tr>
-                <td>{{ user.id }}</td>
-                <td>{{ user.username }}</td>
-                <td>{{ user.password }}</td>
-                <td>{{ user.nom }}</td>
-                <td>{{ user.age }}</td>
-                <td>{{ user.prenom }}</td>
-                <td>{{ user.email }}</td>
-                <td>
-                    <a href="{{ path('app_user_show', {'id': user.id}) }}">show</a>
-                    <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="9">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+		<!-- Page Header -->
+		<div class="page-header">
+			<div class="row align-items-center">
+				<div class="col">
+					<h3 class="page-title">Employee</h3>
+					<ul class="breadcrumb">
+						<li class="breadcrumb-item">
+							<a href="index.html">Dashboard</a>
+						</li>
+						<li class="breadcrumb-item active">Employee</li>
+					</ul>
+				</div>
+				<div class="col-auto float-right ml-auto">
+					<a href="{{ path('app_user_new') }}" class="btn add-btn">
+						<i class="fa fa-plus"></i>
+						Add Employee</a>
+					{# <div class="view-icons">
+																<a href="employees.html" class="grid-view btn btn-link">
+																	<i class="fa fa-th"></i>
+																</a>
+																<a href="employees-list.html" class="list-view btn btn-link active">
+																	<i class="fa fa-bars"></i>
+																</a>
+															</div> #}
+				</div>
+			</div>
+		</div>
+		<!-- /Page Header -->
+
+		<!-- Search Filter -->
+		<div class="row filter-row">
+			<div class="col-sm-6 col-md-3">
+				<div class="form-group form-focus">
+					<input type="text" class="form-control floating">
+					<label class="focus-label">Employee ID</label>
+				</div>
+			</div>
+			<div class="col-sm-6 col-md-3">
+				<div class="form-group form-focus">
+					<input type="text" class="form-control floating">
+					<label class="focus-label">Employee Name</label>
+				</div>
+			</div>
+			{# <div class="col-sm-6 col-md-3">
+										<div class="form-group form-focus select-focus focused">
+											<select class="select floating select2-hidden-accessible" data-select2-id="1" tabindex="-1" aria-hidden="true">
+												<option data-select2-id="3">Select Designation</option>
+												<option>Web Developer</option>
+												<option>Web Designer</option>
+												<option>Android Developer</option>
+												<option>Ios Developer</option>
+											</select>
+											<span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="2" style="width: 100%;">
+												<span class="selection">
+													<span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-rkxx-container">
+														<span class="select2-selection__rendered" id="select2-rkxx-container" role="textbox" aria-readonly="true" title="Select Designation">Select Designation</span>
+														<span class="select2-selection__arrow" role="presentation">
+															<b role="presentation"></b>
+														</span>
+													</span>
+												</span>
+												<span class="dropdown-wrapper" aria-hidden="true"></span>
+											</span>
+											<label class="focus-label">Designation</label>
+										</div>
+									</div> #}
+			<div class="col-sm-6 col-md-3">
+				<a href="#" class="btn btn-success btn-block">
+					Search
+				</a>
+			</div>
+		</div>
+		<!-- /Search Filter -->
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="table-responsive">
+					<div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+						<div class="row">
+							<div
+								class="col-sm-12 col-md-6">{# <div class="dataTables_length" id="DataTables_Table_0_length">
+																											<label>Show
+																												<select name="DataTables_Table_0_length" aria-controls="DataTables_Table_0" class="custom-select custom-select-sm form-control form-control-sm">
+																													<option value="10">10</option>
+																													<option value="25">25</option>
+																													<option value="50">50</option>
+																													<option value="100">100</option>
+																												</select>
+																												entries</label>
+																										</div> #}
+							</div>
+							<div class="col-sm-12 col-md-6"></div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12">
+								<table class="table table-striped custom-table datatable dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+									<thead>
+										<tr role="row">
+											<th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Mobile: activate to sort column ascending" style="width: 115.984px;">Username</th>
+											<th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 251.922px;">Name</th>
+											<th class="text-nowrap sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Join Date: activate to sort column ascending" style="width: 138.203px;">Prenom</th>
+											<th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending" style="width: 323.688px;">Email</th>
+											<th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Role: activate to sort column ascending" style="width: 196.078px;">Age</th>
+											<th class="text-right no-sort sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Action: activate to sort column ascending" style="width: 102.453px;">Action</th>
+										</tr>
+									</thead>
+
+									<tbody>
+
+										{% for user in users %}
+											<tr role="row" class="odd">
+												<td>{{ user.username }}</td>
+												<td>{{ user.nom }}</td>
+												<td>{{ user.prenom }}</td>
+												<td>{{ user.email }}</td>
+												<td>{{ user.age }}</td>
+												<td class="text-right">
+													<div class="dropdown dropdown-action">
+														<a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+															<i class="material-icons">more_vert</i>
+														</a>
+														<div class="dropdown-menu dropdown-menu-right">
+															<a class="dropdown-item" href="{{ path('app_user_edit', {'id': user.id}) }}">
+																<i class="fa fa-pencil m-r-5"></i>
+																Edit</a>
+															{# <a class="dropdown-item" href="{{ path('app_user_delete', {'id': user.id}) }}">
+																															<i class="fa fa-trash-o m-r-5"></i>
+																															Delete</a> #}
+
+															<form action="{{ path('app_user_delete', {'id': user.id}) }}" method="post">
+																<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
+																<button type="submit" class="dropdown-item">
+																	<i class="fa fa-trash-o m-r-5"></i>
+																	Delete
+																</button>
+															</form>
+
+														</div>
+													</div>
+												</td>
+											</tr>
+										{% else %}
+											<tr>
+												<td colspan="9">no records found</td>
+											</tr>
+										{% endfor %}
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="row">
+							<div
+								class="col-sm-12 col-md-5">{# <div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">Showing 1 to 7 of 7 entries</div> #}
+							</div>
+							<div class="col-sm-12 col-md-7">
+								<div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate">
+									<ul class="pagination">
+										<li class="paginate_button page-item previous disabled" id="DataTables_Table_0_previous">
+											<a href="#" aria-controls="DataTables_Table_0" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
+										</li>
+										<li class="paginate_button page-item active">
+											<a href="#" aria-controls="DataTables_Table_0" data-dt-idx="1" tabindex="0" class="page-link">1</a>
+										</li>
+										<li class="paginate_button page-item next disabled" id="DataTables_Table_0_next">
+											<a href="#" aria-controls="DataTables_Table_0" data-dt-idx="2" tabindex="0" class="page-link">Next</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 {% endblock %}

@@ -26,6 +26,9 @@ class Project
     #[ORM\Column(length: 255)]
     private ?string $priorite = null;
 
+    #[ORM\ManyToOne(inversedBy: 'project')]
+    private ?User $user = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -75,6 +78,18 @@ class Project
     public function setPriorite(string $priorite): static
     {
         $this->priorite = $priorite;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
 
         return $this;
     }
