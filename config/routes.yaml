@@ -23,3 +23,8 @@ app_user_delete:
     path: '/user/{id}/delete'
     controller: 'App\Controller\UserController::delete'
     methods: ['POST']
+# routes.yaml
+app_tache_index:
+    path: '/taches/{id_projet}'
+    controller: App\Controller\TacheController::index
+    methods: ['GET']
