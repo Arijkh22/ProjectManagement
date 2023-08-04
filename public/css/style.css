@@ -1543,7 +1543,7 @@ table.dataTable thead > tr > td.sorting {
 
 .page-wrapper {
 	left: 0;
-	margin-left: 230px;
+	margin-left: 230.task-wrapper .task-list-footer .new-task-wrapperpx;
 	padding-top: 60px;
 	position: relative;
 	transition: all 0.2s ease-in-out;
@@ -2223,7 +2223,6 @@ table.dataTable thead > tr > td.sorting {
 	display: table;
 	height: 100%;
 	table-layout: fixed;
-	width: 100%;
 }
 .message-view {
 	display: table-cell;
@@ -4162,7 +4161,6 @@ table.dataTable thead > tr > td.sorting {
 	-ms-transition: all 300ms ease;
 	-o-transition: all 300ms ease;
 	transition: all 300ms ease;
-	max-height: 0;
 	overflow: hidden;
 }
 .task-wrapper .task-list-footer .new-task-wrapper::after {

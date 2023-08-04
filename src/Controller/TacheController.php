@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+
 #[Route('/tache/{id_projet}')]
 class TacheController extends AbstractController
 {
@@ -89,5 +90,36 @@ class TacheController extends AbstractController
 
         return $this->redirectToRoute('app_tache_index', ['id_projet' => $tache->getProjectName()->getId()], Response::HTTP_SEE_OTHER);
     }
+
+    #[Route('/{id}/detail', name: 'app_tache_detail')]
+    public function detail(Request $request,int $id_projet, Tache $tache, EntityManagerInterface $entityManager): Response
+    {
+        return $this->render(view: 'tache/tache.html.twig', parameters: [
+
+        ]);
+
+    }
+    #[Route('/api/tasks', name: 'api_add_task', methods: ['POST'])]
+    public function ajouterTache(Request $request): Response
+    {
+        // Récupérer les données envoyées par AJAX
+        $data = json_decode($request->getContent(), true);
+
+        // Créer une nouvelle instance de Tache avec les données reçues
+        $tache = new Tache();
+        $tache->setTaskLabel($data['task_label']);
+        // ... autres champs à remplir ...
+
+        // Enregistrer la nouvelle tâche dans la base de données
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($tache);
+        $entityManager->flush();
+
+        // Répondre avec un message JSON indiquant que la tâche a été ajoutée avec succès
+        return new JsonResponse(['message' => 'Tache ajoutée avec succès'], Response::HTTP_CREATED);
+    }
+
+    // ...
+
 
 }

@@ -23,17 +23,19 @@ class ProjectController extends AbstractController
     }
 
     #[Route('/new', name: 'app_project_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function newProject(Request $request): Response
     {
         $project = new Project();
+
         $form = $this->createForm(ProjectType::class, $project);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($project);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_project_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_project_index'); // Rediriger vers la liste des projets après la création réussie
         }
 
         return $this->renderForm('project/new.html.twig', [

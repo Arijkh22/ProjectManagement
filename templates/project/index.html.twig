@@ -3,7 +3,7 @@
 {% block title %}Project index{% endblock %}
 
 {% block body %}
-	<div class="content container-fluid">
+	<div class="content container-fluid" style="margin-left: 200px;width: auto">
 		<!-- Page Header -->
 		<div class="page-header">
 			<div class="row align-items-center">
@@ -70,8 +70,7 @@
 												</button>
 											</form>
 											<a class="dropdown-item" href="{{ path('app_tache_index', {'id_projet': project.getId()}) }}">
-												<i class="fa fa-pencil m-r-5"></i>
-												Tasks
+												<i class="bi bi-list-task"></i> 												Tasks
 											</a>
 										</div>
 									</div>

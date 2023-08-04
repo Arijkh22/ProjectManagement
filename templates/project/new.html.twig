@@ -3,8 +3,26 @@
 {% block title %}New Project{% endblock %}
 
 {% block body %}
-
-    {{ include('project/_form.html.twig') }}
-
-    <a href="{{ path('app_project_index') }}">back to list</a>
+    <div class="content container-fluid" style="margin-left: 200px;width: auto">
+        <div class="page-header">
+            <h3 class="page-title">Create new Project</h3>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form method="post">
+                            {{ form_start(form) }}
+                            {{ form_widget(form) }}
+                            <div class="submit-section">
+                                <button type="submit" class="btn btn-primary">Save</button>
+                                <a href="{{ path('app_project_index') }}" class="btn btn-secondary">Back to List</a>
+                            </div>
+                            {{ form_end(form) }}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

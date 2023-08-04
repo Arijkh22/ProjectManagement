@@ -3,9 +3,17 @@
 {% block title %}New Tache{% endblock %}
 
 {% block body %}
-    <h1>Create new Tache</h1>
-
-    {{ include('tache/_form.html.twig') }}
-
-    <a href="{{ path('app_tache_index', {'id_projet': project.getId()}) }}">back to list</a>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Create new Tache</h5>
+        </div>
+        <div class="modal-body" style="margin-left: 200px;width: auto">
+            <form method="post">
+                {{ include('tache/_form.html.twig') }}
+                <div class="submit-section text-center"> {# Use 'text-center' class to center the content #}
+                    <a href="{{ path('app_tache_index', {'id_projet': project.getId()}) }}" class="btn btn-secondary">Back to List</a>
+                </div>
+            </form>
+        </div>
+    </div>
 {% endblock %}
