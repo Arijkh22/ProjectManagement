@@ -28,3 +28,8 @@ app_tache_index:
     path: '/taches/{id_projet}'
     controller: App\Controller\TacheController::index
     methods: ['GET']
+app_tache_add_task:
+    path: /tache/{id_projet}/add-task
+    controller: App\Controller\TacheController::addTask
+    methods: [POST]
+
