@@ -295,6 +295,27 @@
         </div>
     </div>
     </div>
+    <div class="modal fade" id="assignModal" tabindex="-1" role="dialog" aria-labelledby="assignModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="assignModalLabel">Assign User</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ul id="userList">
+                        <!-- Liste d'utilisateurs à charger dynamiquement via AJAX -->
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="assignUserButton">Assign</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
 {% block js %}
@@ -329,10 +350,10 @@
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</span>
                                                             <span class="task-label" contenteditable="true">${item.nom}</span>
                                                             <span class="task-action-btn task-btn-right">
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class="action-circle large" title="Assign">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class="action-circle large" title="Assign" data-toggle="modal" data-target="#assignModal">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class="material-icons">person_add</i>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</span>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class="action-circle large delete-btn" title="Delete Task">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class="action-circle large delete-btn" title="Delete Task" >
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class="material-icons">delete</i>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</span>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</span>
@@ -351,7 +372,7 @@
             $(document).on('click', '#add-task', function () {
                 var newTaskText = $('#new-task').val();
                 console.log(newTaskText)
-                if (newTaskText.trim() !== '' ) {
+                if (newTaskText.trim() !== '') {
                     $.ajax({
                         url: "{{ path('app_tache_add_task',{'id_projet':app.request.get('id_projet')}) }}",
                         method: 'POST',
@@ -364,9 +385,40 @@
                         }
                     });
                 }
-            });
-        });
 
+            });
+            $('#assignModal').on('show.bs.modal', function() {
+                $.ajax({
+                    url: '{{ path('get_users_ajax',{'id_projet':app.request.get('id_projet')}) }}', // L'URL de votre route pour obtenir la liste des utilisateurs
+                    type: 'GET',
+                    success: function(response) {
+                        var userList = $('#userList');
+                        userList.empty();
+
+                        response.forEach(function(user) {
+                            var userItem = $('<li><button class="user-button">' + user.username + '</button></li>');
+                            userList.append(userItem);
+                        });
+                    },
+                    error: function() {
+                        console.error('Erreur lors du chargement des utilisateurs.');
+                    }
+                });
+            });
+
+            // Gérer la sélection d'un utilisateur
+            $(document).on('click', '.user-button', function() {
+                var selectedUserName = $(this).text();
+                // Faites quelque chose avec le nom d'utilisateur sélectionné
+                // Par exemple, mettez à jour un champ de formulaire
+                $('#selectedUserName').val(selectedUserName);
+
+                // Fermer la boîte de dialogue modale
+                $('#assignModal').modal('hide');
+            });
+
+
+        });
 
     </script>
 {% endblock %}

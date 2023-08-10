@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\User;
 
 
 #[Route('/tache/{id_projet}')]
@@ -146,6 +147,35 @@ class TacheController extends AbstractController
 
 
         //return new JsonResponse(['success' => false], Response::HTTP_BAD_REQUEST);
+    }
+
+
+    #[Route('/get-users-ajax', name: 'get_users_ajax', methods: ['GET'])]
+    public function getUsersAjax(): JsonResponse
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $users = $entityManager->getRepository(User::class)->findAll();
+
+        $userArray = [];
+        foreach ($users as $user) {
+            $userArray[] = ['username' => $user->getUsername()];
+        }
+
+        return new JsonResponse($userArray);
+    }
+
+    #[Route('/delete/{id}', name: 'app_tache_delete', methods: ['POST'])]
+    public function deleteJson(Request $request, Tache $tache, EntityManagerInterface $entityManager): Response
+    {
+        // Vérifiez si le jeton CSRF est valide
+        if ($this->isCsrfTokenValid('delete' . $tache->getId(), $request->request->get('_token'))) {
+            $entityManager->remove($tache);
+            $entityManager->flush();
+        }
+
+        // Rediriger vers la liste des tâches après la suppression
+        // Vous pouvez adapter cette redirection en fonction de vos besoins
+        return $this->redirectToRoute('app_tache_index', ['id_projet' => $tache->getProjectName()->getId()], Response::HTTP_SEE_OTHER);
     }
 
 

@@ -33,9 +33,3 @@ $(document).ready(function() {
 });
 
 
-    $(document).on('click', '.delete-btn', function () {
-        //
-        $(this).closest('.task').remove();
-
-
-    });
